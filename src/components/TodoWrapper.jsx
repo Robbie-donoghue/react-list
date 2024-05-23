@@ -22,13 +22,23 @@ export const TodoWrapper = () => {
       )
     );
   };
+  //deleteTodo func on each id
+  const deleteTodo = (id) => {
+    //remove todo with the id thats equal to id I passed it
+    setTodos(todos.filter((todo) => todo.id !== id)); //filter each todo that isn't equal to id I passed it. Then return that value
+  };
   return (
     <div className="TodoWrapper">
       <h1> React list</h1>
       <TodoForm addTodo={addTodo} />
       {/* // generate todo for each value in state */}
       {todos.map((todo, index) => (
-        <Todo task={todo} key={index} toggleComplete={toggleComplete} />
+        <Todo
+          task={todo}
+          key={index}
+          toggleComplete={toggleComplete}
+          deleteTodo={deleteTodo}
+        />
       ))}
     </div>
   );
