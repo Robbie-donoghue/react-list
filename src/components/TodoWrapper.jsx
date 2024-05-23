@@ -14,13 +14,21 @@ export const TodoWrapper = () => {
     ]);
     console.log(todos);
   };
+  //create toggleComplete func, on each id passed to apply this class
+  const toggleComplete = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
   return (
     <div className="TodoWrapper">
       <h1> React list</h1>
       <TodoForm addTodo={addTodo} />
       {/* // generate todo for each value in state */}
       {todos.map((todo, index) => (
-        <Todo task={todo} key={index} />
+        <Todo task={todo} key={index} toggleComplete={toggleComplete} />
       ))}
     </div>
   );
