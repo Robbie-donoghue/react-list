@@ -1,6 +1,7 @@
 import { TodoForm } from "./TodoForm";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Todo } from "./Todo";
 uuidv4();
 export const TodoWrapper = () => {
   //need to pass value from TodoForm to other components, create the state in the parent component, this one! -> use props to pass the state from TodoForm to TodoWrapper
@@ -15,7 +16,12 @@ export const TodoWrapper = () => {
   };
   return (
     <div className="TodoWrapper">
+      <h1> React list</h1>
       <TodoForm addTodo={addTodo} />
+      {/* // generate todo for each value in state */}
+      {todos.map((todo, index) => (
+        <Todo task={todo} key={index} />
+      ))}
     </div>
   );
 };
